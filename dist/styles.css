@@ -1,0 +1,61 @@
+/*!*************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/components/BannerHtml/banner-html.scss ***!
+  \*************************************************************************************************************************************/
+.banner-html-wrapper .warning {
+  background-color: #e7da8f;
+  padding: 30px;
+  border-radius: 5px;
+}
+/*!****************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/components/Button/button.scss ***!
+  \****************************************************************************************************************************/
+.btn-wrapper {
+  padding: 30px 0;
+}
+.btn-wrapper .btn {
+  background: #0c79df;
+  border-radius: 5px;
+  border: 1px solid #0c79df;
+  color: #fff;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1;
+  padding: 10px 20px;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+}
+.btn-wrapper .btn:hover {
+  background: #fff;
+  color: #0c79df;
+}
+/*!****************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/components/Castle/castle.scss ***!
+  \****************************************************************************************************************************/
+.castle-wrapper {
+  background-color: #0c79df;
+  border-radius: 5px;
+  border: 5px solid #0c79df;
+  width: 300px;
+  display: flex;
+}
+.castle-wrapper img {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  line-height: 0;
+}
+/*!*****************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/components/DocTxt/doc-txt.scss ***!
+  \*****************************************************************************************************************************/
+.doc-txt {
+  margin: 30px 0;
+}
+/*!*********************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/components/JsonFile/json-file.scss ***!
+  \*********************************************************************************************************************************/
+.json-file-wrapper {
+  background-color: #4e2609;
+  color: white;
+  padding: 15px;
+}

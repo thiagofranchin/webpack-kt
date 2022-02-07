@@ -1,0 +1,15 @@
+.castle-wrapper {
+  background-color: #0c79df;
+  border-radius: 5px;
+  border: 5px solid #0c79df;
+  width: 300px;
+  display: flex;
+
+
+  img {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    line-height: 0;
+  }
+}
