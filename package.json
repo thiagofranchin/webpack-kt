@@ -1,14 +1,14 @@
 {
   "name": "webpack-kt",
   "version": "1.0.0",
-  "description": "",
+  "description": "Examples of webpack settings",
   "main": "index.js",
   "scripts": {
     "dev": "webpack --mode development --watch",
     "build": "webpack --mode production"
   },
   "keywords": [],
-  "author": "",
+  "author": "Thiago Franchin",
   "license": "ISC",
   "dependencies": {
     "webpack": "^5.68.0",
@@ -16,12 +16,15 @@
   },
   "devDependencies": {
     "css-loader": "^6.6.0",
+    "dotenv-webpack": "^7.1.0",
     "file-loader": "^6.2.0",
     "html-loader": "^3.1.0",
+    "html-webpack-plugin": "^5.5.0",
     "mini-css-extract-plugin": "^2.5.3",
     "raw-loader": "^4.0.2",
     "sass": "^1.49.7",
     "sass-loader": "^12.4.0",
-    "style-loader": "^3.3.1"
+    "style-loader": "^3.3.1",
+    "terser-webpack-plugin": "^5.3.1"
   }
 }
