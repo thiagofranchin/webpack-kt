@@ -329,6 +329,9 @@ devServer: {
 ___
 
 ## JQuery
+
+Read more in [Usage: jQuery](https://webpack.js.org/plugins/provide-plugin/#usage-jquery)
+
 ```bash
 yarn add -D jquery
 ```
