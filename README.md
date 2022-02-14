@@ -332,10 +332,25 @@ ___
 ```bash
 yarn add -D jquery
 ```
-Just import jquery to use it.
+
+`webpack.config.js`
+```js
+var webpack = require("webpack");
+...
+
+plugins: [
+  ...
+  new webpack.ProvidePlugin({
+    $: "jquery",
+    jQuery: "jquery"
+  })
+]
+
+```
 
 `index.js` example:
 ```js
+// The "import" is not needed if jquery was called in plugins in the webpack file
 import $ from 'jquery';
 
 $('h1').text('Hello World');

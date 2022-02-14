@@ -45,6 +45,10 @@ module.exports = {
       VERSION: JSON.stringify('1.0.0'),
       PORT: JSON.stringify('8080')
     }),
+    new webpack.ProvidePlugin({
+      $: "jquery",
+      jQuery: "jquery"
+    }),
     new DotenvPlugin(),
     new HtmlWebpackPlugin({
       title: 'Webpack 5',
