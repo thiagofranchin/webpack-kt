@@ -7,12 +7,25 @@ Contains examples using `webpack 5`.
 - The browser must support ES5 features.
 ___
 ## Commands to start
-```text
-- git clone https://github.com/thiagofranchin/webpack-kt.git
-- cd webpack-kt
-- yarn     or npm install
-- yarn dev or npm run dev
-- Open /dist/index.html in the browser and see the output of the /src/index.js file
+```bash
+git clone https://github.com/thiagofranchin/webpack-kt.git
+```
+```bash
+cd webpack-kt
+```
+```bash
+yarn | npm install
+```
+### To start the development server
+```bash
+yarn dev | npm run dev
+```
+
+### To build the project for production.
+
+Open `/dist/index.html` in the browser and see the output of the /src/index.js file.
+```bash
+yarn prod | npm run prod
 ```
 ___
 ## Install
@@ -26,6 +39,13 @@ yarn add webpack webpack-cli
 "scripts": {
   "dev": "webpack --mode development --watch",
   "build": "webpack --mode production"
+},
+```
+### With different configuration
+```json
+"scripts": {
+  "dev": "webpack --config webpack.config.dev.js --watch",
+  "prod": "webpack --config webpack.config.prod.js"
 },
 ```
 
@@ -74,19 +94,38 @@ yarn add -D sass style-loader css-loader sass-loader
 ```
 ___
 
-## Images
+## Remove CSS from JS
 ```bash
-yarn add -D file-loader
+yarn add -D mini-css-extract-plugin
 ```
+`webpack.config.js`
+```javascript
+  {
+    test: /\.s?css$/,
+    use: [
+      MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'
+    ]
+  }
+...
+plugins: [
+  new MiniCssExtractPlugin({
+    filename: 'styles.css'
+  })
+]
+```
+___
+
+## Images
+No need loaders for images.
+
+Read more in [Asset Modules](https://webpack.js.org/guides/asset-modules/)
 
 `webpack.config.js`
 ```javascript
 {
-  test: /\.(png|jpg|jpeg)$/,
-  use: [
-    'file-loader'
-  ]
-}
+  test: /\.(png|jpg|jpeg|svg)$/,
+  type: 'asset/resource'
+},
 ```
 ___
 
@@ -124,27 +163,23 @@ ___
 - JSON files are standard webpack data.
 - Don't need loaders.
 
-## Remove CSS from JS
-```bash
-yarn add -D mini-css-extract-plugin
+`register.json`
+```json
+{
+  "name": "Sr(a). Webpack",
+  "email": "webpack@email.com",
+}
 ```
-`webpack.config.js`
+`index.js`
 ```javascript
-  {
-    test: /\.s?css$/,
-    use: [
-      MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'
-    ]
-  }
-...
-plugins: [
-  new MiniCssExtractPlugin({
-    filename: 'styles.css'
-  })
-]
+import register from './register.json';
+
+document.body.innerHTML = `
+  <h1>${register.name}</h1>
+  <p>${register.email}</p>
+`;
 ```
 ___
-
 
 ## Minimize JavaScript in the Development Environment
 
@@ -153,7 +188,7 @@ ___
 - Used, for example, to test the javascript performance
 
 ```bash
-npm install --save-dev terser-webpack-plugin
+yarn add -D terser-webpack-plugin
 ```
 `webpack.config.js`
 ```js
@@ -204,7 +239,7 @@ PORT=8080
 
 `webpack.config.js`
 ```bash
-npm install --save-dev dotenv-webpack
+yarn add -D dotenv-webpack
 ```
 
 `webpack.config.js`
@@ -227,7 +262,7 @@ ___
 Gererate html file with webpack.
 
 ```bash
-npm install --save-dev html-webpack-plugin
+yarn add -D html-webpack-plugin
 ```
 `webpack.config.js`
 ```js
@@ -249,7 +284,7 @@ ___
 
 ## Remove unused files
 ```bash
-npm install --save-dev clean-webpack-plugin
+yarn add -D clean-webpack-plugin
 ```
 `webpack.config.js`
 
@@ -262,6 +297,48 @@ plugins: [
   new CleanWebpackPlugin()
   ...
 ]
+```
+___
+
+## Webpack Dev Server
+```bash
+yarn add -D webpack-dev-server
+```
+`package.json`
+```json
+"scripts": {
+  "dev": "webpack serve --config webpack.config.dev.js",
+  ...
+},
+```
+
+`webpack.config.dev.js`
+```js
+mode: 'development',
+devServer: {
+  static: {
+    directory: path.resolve(__dirname, 'dist'),
+  },
+  port: 8080,
+  historyApiFallback: {
+    index: 'index.html'
+  }
+},
+
+```
+___
+
+## JQuery
+```bash
+yarn add -D jquery
+```
+Just import jquery to use it.
+
+`index.js` example:
+```js
+import $ from 'jquery';
+
+$('h1').text('Hello World');
 ```
 
 # Useful links

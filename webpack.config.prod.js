@@ -1,7 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const TerserPlugin = require('terser-webpack-plugin');
 const DotenvPlugin = require('dotenv-webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
@@ -11,14 +10,7 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     filename: '[name].js?[contenthash]'
   },
-  mode: 'development',
-  // Uncomment the code below to minimize JavaScript
-  /*
-    optimization: {
-     minimize: true,
-     minimizer: [new TerserPlugin()]
-    },
-  */
+  mode: 'production',
   module: {
     rules: [
       {
@@ -30,10 +22,8 @@ module.exports = {
         ]
       },
       {
-        test: /\.(png|jpg|jpeg)$/,
-        use: [
-          'file-loader'
-        ]
+        test: /\.(png|jpg|jpeg|svg)$/,
+        type: 'asset/resource'
       },
       {
         test: /\.txt$/,
@@ -56,6 +46,11 @@ module.exports = {
       PORT: JSON.stringify('8080')
     }),
     new DotenvPlugin(),
-    new HtmlWebpackPlugin()
+    new HtmlWebpackPlugin({
+      title: 'Webpack 5',
+      filename: 'index.html',
+      inject: 'body',
+      favicon: path.resolve(__dirname, './src/images/webpack.png'),
+    })
   ]
 };
